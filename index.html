@@ -23,7 +23,7 @@
     }
 
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); }
+    body { background: var(--bg); opacity:0; transition:opacity .5s ease; }
 
     /* ── NAV ── */
     header {
@@ -484,9 +484,15 @@
       .cta-section { flex-direction: column; align-items: flex-start; }
       footer { padding: 20px 4%; flex-direction: column; gap: 12px; }
     }
-  </style>
+  
+#loader{position:fixed;inset:0;background:#f8f7ff;display:flex;justify-content:center;align-items:center;z-index:99999;transition:opacity .4s ease;}
+.spinner{width:60px;height:60px;border:5px solid rgba(133,40,255,.15);border-top:5px solid rgb(133,40,255);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+</style>
 </head>
 <body>
+<div id="loader"><div class="spinner"></div></div>
 
 <!-- HEADER -->
 <header>
@@ -798,6 +804,7 @@
   }, {threshold: 0.5});
   document.querySelectorAll('.bar-fill').forEach(b => obs.observe(b));
 })();
+window.addEventListener("load",()=>{document.body.style.opacity="1";const l=document.getElementById("loader");l.style.opacity="0";setTimeout(()=>l.remove(),400);});
 </script>
 </body>
 </html>
