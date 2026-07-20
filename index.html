@@ -754,10 +754,11 @@
       </div>
     </div>
     <div class="contact-form reveal">
-      <input type="text" placeholder="Your Name">
-      <input type="email" placeholder="Your Email">
-      <textarea placeholder="Tell me about your project or opportunity…"></textarea>
-      <button type="button">Send Message <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+      <input type="text" id="cf-name" placeholder="Your Name">
+      <input type="email" id="cf-email" placeholder="Your Email">
+      <textarea id="cf-message" placeholder="Tell me about your project or opportunity…"></textarea>
+      <div id="cf-status" style="font-size:0.82rem; color: var(--muted); min-height: 18px;"></div>
+      <button type="button" id="cf-send">Send Message <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
     </div>
   </div>
 </section>
@@ -805,6 +806,41 @@
   document.querySelectorAll('.bar-fill').forEach(b => obs.observe(b));
 })();
 window.addEventListener("load",()=>{document.body.style.opacity="1";const l=document.getElementById("loader");l.style.opacity="0";setTimeout(()=>l.remove(),400);});
+
+// Contact form -> mailto
+(function(){
+  const btn = document.getElementById('cf-send');
+  const nameEl = document.getElementById('cf-name');
+  const emailEl = document.getElementById('cf-email');
+  const msgEl = document.getElementById('cf-message');
+  const statusEl = document.getElementById('cf-status');
+  const MY_EMAIL = 'senseicoder09@gmail.com';
+
+  btn.addEventListener('click', () => {
+    const name = nameEl.value.trim();
+    const email = emailEl.value.trim();
+    const message = msgEl.value.trim();
+
+    if (!name || !email || !message) {
+      statusEl.textContent = 'Please fill in all fields before sending.';
+      statusEl.style.color = '#d9534f';
+      return;
+    }
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      statusEl.textContent = 'Please enter a valid email address.';
+      statusEl.style.color = '#d9534f';
+      return;
+    }
+
+    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    window.location.href = `mailto:${MY_EMAIL}?subject=${subject}&body=${body}`;
+
+    statusEl.textContent = 'Opening your email app…';
+    statusEl.style.color = 'var(--muted)';
+  });
+})();
 </script>
 </body>
 </html>
