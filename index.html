@@ -807,16 +807,16 @@
 })();
 window.addEventListener("load",()=>{document.body.style.opacity="1";const l=document.getElementById("loader");l.style.opacity="0";setTimeout(()=>l.remove(),400);});
 
-// Contact form -> mailto
+// Contact form -> Formspree
 (function(){
   const btn = document.getElementById('cf-send');
   const nameEl = document.getElementById('cf-name');
   const emailEl = document.getElementById('cf-email');
   const msgEl = document.getElementById('cf-message');
   const statusEl = document.getElementById('cf-status');
-  const MY_EMAIL = 'senseicoder09@gmail.com';
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xojgwpkv';
 
-  btn.addEventListener('click', () => {
+  btn.addEventListener('click', async () => {
     const name = nameEl.value.trim();
     const email = emailEl.value.trim();
     const message = msgEl.value.trim();
@@ -833,12 +833,40 @@ window.addEventListener("load",()=>{document.body.style.opacity="1";const l=docu
       return;
     }
 
-    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-    window.location.href = `mailto:${MY_EMAIL}?subject=${subject}&body=${body}`;
+    btn.disabled = true;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = 'Sending…';
+    statusEl.textContent = '';
 
-    statusEl.textContent = 'Opening your email app…';
-    statusEl.style.color = 'var(--muted)';
+    try {
+      const fd = new FormData();
+      fd.append('name', name);
+      fd.append('email', email);
+      fd.append('message', message);
+
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: fd
+      });
+
+      if (response.ok) {
+        statusEl.textContent = 'Message sent! I\'ll get back to you soon.';
+        statusEl.style.color = '#2e7d32';
+        nameEl.value = '';
+        emailEl.value = '';
+        msgEl.value = '';
+      } else {
+        statusEl.textContent = 'Something went wrong. Please try again or email me directly.';
+        statusEl.style.color = '#d9534f';
+      }
+    } catch (err) {
+      statusEl.textContent = 'Network error. Please try again or email me directly.';
+      statusEl.style.color = '#d9534f';
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = originalText;
+    }
   });
 })();
 </script>
