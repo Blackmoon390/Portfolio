@@ -77,6 +77,15 @@
       white-space: nowrap;
     }
     .header-btn:hover { background: var(--purple-dark); }
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      color: var(--navy);
+      font-size: 22px;
+      cursor: pointer;
+      padding: 6px 8px;
+      margin-left: auto;
+    }
 
     /* ── HERO ── */
     #hero {
@@ -469,20 +478,67 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      #hero { grid-template-columns: 1fr; }
-      .hero-right { display: none; }
+      #hero { grid-template-columns: 1fr; min-height: auto; padding-bottom: 50px; }
+      .hero-left { order: 1; padding-top: 20px; }
+      .hero-right {
+        order: 2;
+        position: static;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+      }
+      .hero-blob { display: none; }
+      .hero-img-wrap {
+        position: static;
+        width: 70%;
+        max-width: 340px;
+        animation: imgIn 1.4s ease-in-out forwards;
+      }
       .skills-grid, .projects-grid { grid-template-columns: 1fr 1fr; }
       .about-grid, .contact-grid { grid-template-columns: 1fr; }
       .skill-bars { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
-      header { gap: 20px; padding: 0 4%; }
-      nav { display: none; }
-      #hero { padding: 80px 4% 0; }
-      section { padding: 70px 4%; }
+      header { gap: 12px; padding: 0 4%; position: fixed; }
+      .header-btn { display: none; }
+      .nav-toggle { display: block; }
+      nav {
+        display: none;
+        position: fixed;
+        top: 80px; left: 0; right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: var(--white);
+        border-bottom: 1px solid rgba(133,40,255,0.1);
+        box-shadow: 0 16px 30px rgba(43,58,85,0.1);
+        padding: 8px 6%;
+      }
+      nav.open { display: flex; }
+      nav .nav-item {
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(133,40,255,0.08);
+        width: 100%;
+      }
+      #hero { padding: 74px 5% 0; }
+      .hero-left h1 { letter-spacing: 2px; }
+      .hero-img-wrap { width: 60%; max-width: 260px; }
+      .hero-stats { gap: 22px; flex-wrap: wrap; row-gap: 16px; }
+      section { padding: 60px 5%; }
+      .section-title { margin-bottom: 32px; }
       .skills-grid, .projects-grid { grid-template-columns: 1fr; }
-      .cta-section { flex-direction: column; align-items: flex-start; }
-      footer { padding: 20px 4%; flex-direction: column; gap: 12px; }
+      .cta-section { flex-direction: column; align-items: stretch; gap: 14px; }
+      .cta-1, .cta-2 { justify-content: center; }
+      .exp-card { padding: 28px 22px; }
+      .exp-top { flex-direction: column; align-items: flex-start; gap: 10px; }
+      footer { padding: 20px 5%; flex-direction: column; gap: 12px; text-align: center; }
+    }
+    @media (max-width: 400px) {
+      .hero-left h3 { font-size: 1.5rem; }
+      .hero-left h1 { font-size: 2.5rem; }
+      .stat-num { font-size: 1.4rem; }
+      .header-logo { font-size: 22px; }
     }
   
 #loader{position:fixed;inset:0;background:#f8f7ff;display:flex;justify-content:center;align-items:center;z-index:99999;transition:opacity .4s ease;}
@@ -497,7 +553,7 @@
 <!-- HEADER -->
 <header>
   <a class="header-logo">VS<span>.</span></a>
-  <nav>
+  <nav id="mainNav">
     <a class="nav-item" href="#about">About</a>
     <a class="nav-item" href="#skills">Skills</a>
     <a class="nav-item" href="#projects">Projects</a>
@@ -505,6 +561,7 @@
     <a class="nav-item" href="#contact">Contact</a>
   </nav>
   <button class="header-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Let's Talk</button>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
 </header>
 
 <!-- HERO -->
@@ -786,6 +843,27 @@
     setTimeout(tick, del?38:60);
   }
   tick();
+})();
+
+// Mobile nav toggle
+(function(){
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('mainNav');
+  if(!toggle || !nav) return;
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('open');
+    const icon = toggle.querySelector('i');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-xmark');
+  });
+  nav.querySelectorAll('.nav-item').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      const icon = toggle.querySelector('i');
+      icon.classList.add('fa-bars');
+      icon.classList.remove('fa-xmark');
+    });
+  });
 })();
 
 // Scroll reveal
