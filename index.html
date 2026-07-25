@@ -109,7 +109,7 @@
       text-decoration: none;
     }
     .nav-item:hover { color: var(--purple); }
-    .header-actions { display: flex; align-items: center; gap: 14px; }
+    .header-actions { display: flex; align-items: center; gap: 14px; margin-left: auto; }
     .theme-toggle {
       width: 42px;
       height: 42px;
@@ -139,6 +139,10 @@
       cursor: pointer;
       transition: 0.25s;
       white-space: nowrap;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
     .header-btn:hover { background: var(--purple-dark); }
 
@@ -451,49 +455,6 @@
     .exp-list li { font-size: 0.92rem; line-height: 1.65; color: var(--muted); padding-left: 20px; position: relative; }
     .exp-list li::before { content: '▸'; position: absolute; left: 0; color: var(--purple); font-size: 0.75rem; top: 3px; }
 
-    /* ── HACKATHONS ── */
-    #hackathons { background: var(--white); }
-    .hack-card {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 32px;
-      background: var(--bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 36px 40px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-    .hack-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--purple-dark), var(--purple));
-    }
-    .hack-card:hover { border-color: rgba(133,40,255,0.4); transform: translateY(-4px); box-shadow: 0 14px 40px rgba(133,40,255,0.13); }
-    .hack-left .proj-badge { margin-bottom: 14px; }
-    .hack-title { font-size: 1.2rem; font-weight: 800; color: var(--navy); margin-bottom: 10px; line-height: 1.3; }
-    .hack-desc { font-size: 0.9rem; line-height: 1.7; color: var(--muted); max-width: 560px; }
-    .hack-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: var(--purple);
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .hack-card:hover .hack-right i { transform: translateX(4px); }
-    .hack-right i { transition: transform 0.25s; }
-
     /* ── CONTACT ── */
     #contact { background: var(--white); }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
@@ -609,7 +570,7 @@
     <a class="nav-item" href="#skills">Skills</a>
     <a class="nav-item" href="#experience">Experience</a>
     <a class="nav-item" href="#projects">Projects</a>
-    <a class="nav-item" href="#hackathons">Hackathons</a>
+    <a class="nav-item" href="hackathons.html">Hackathons</a>
     <a class="nav-item" href="#contact">Contact</a>
   </nav>
   <div class="header-actions">
@@ -837,24 +798,6 @@
   </div>
 </section>
 
-<!-- HACKATHONS -->
-<section id="hackathons">
-  <div class="reveal">
-    <div class="section-tag">Competitions</div>
-    <h2 class="section-title">Hackathons</h2>
-  </div>
-  <a href="hackathons.html" class="hack-card reveal">
-    <div class="hack-left">
-      <span class="proj-badge">1st Prize</span>
-      <h3 class="hack-title">PALS TurboTech Build Hackathon 2025</h3>
-      <p class="hack-desc">Won First Prize for an AI-based multi-label text classification solution built on text embeddings. Includes full write-up, problem statement, and approach.</p>
-    </div>
-    <div class="hack-right">
-      <span>View Hackathon</span>
-      <i class="fa-solid fa-arrow-right"></i>
-    </div>
-  </a>
-</section>
 
 <!-- CONTACT -->
 <section id="contact">
