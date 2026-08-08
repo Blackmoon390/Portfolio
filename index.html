@@ -38,7 +38,6 @@
       --social-border: rgba(43,58,85,0.2);
       --edu-badge-border: rgba(133,40,255,0.2);
       --tag-border: rgba(133,40,255,0.18);
-      --bar-track-bg: rgba(133,40,255,0.1);
       --proj-badge-border: rgba(133,40,255,0.25);
       --proj-tech-bg: rgba(43,58,85,0.07);
       --input-border: rgba(133,40,255,0.15);
@@ -61,7 +60,6 @@
       --social-border: rgba(163,94,255,0.3);
       --edu-badge-border: rgba(163,94,255,0.3);
       --tag-border: rgba(163,94,255,0.3);
-      --bar-track-bg: rgba(163,94,255,0.18);
       --proj-badge-border: rgba(163,94,255,0.3);
       --proj-tech-bg: rgba(163,94,255,0.14);
       --input-border: rgba(163,94,255,0.3);
@@ -360,7 +358,14 @@
     }
     .skill-card:hover { border-color: rgba(133,40,255,0.35); transform: translateY(-4px); box-shadow: 0 12px 36px rgba(133,40,255,0.12); }
     .skill-card:hover::before { transform: scaleX(1); }
-    .skill-emoji { font-size: 1.6rem; margin-bottom: 12px; }
+    .skill-image {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 14px;
+      display: block;
+    }
     .skill-cat { font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--purple); margin-bottom: 6px; }
     .skill-name { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
     .tags { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -375,20 +380,6 @@
     }
 
     /* skill bars */
-    .skill-bars { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px 52px; }
-    .bar-item {}
-    .bar-top { display: flex; justify-content: space-between; margin-bottom: 7px; }
-    .bar-label { font-size: 0.9rem; font-weight: 600; color: var(--navy); }
-    .bar-pct { font-size: 0.8rem; font-weight: 700; color: var(--purple); }
-    .bar-track { height: 5px; background: var(--bar-track-bg); border-radius: 10px; }
-    .bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--purple-dark), var(--purple));
-      border-radius: 10px;
-      width: 0;
-      transition: width 1.3s cubic-bezier(.16,1,.3,1);
-    }
-
     /* ── PROJECTS ── */
     #projects { background: var(--white); }
     .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
@@ -541,7 +532,6 @@
       .hero-right { display: none; }
       .skills-grid, .projects-grid { grid-template-columns: 1fr 1fr; }
       .about-grid, .contact-grid { grid-template-columns: 1fr; }
-      .skill-bars { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       header { gap: 20px; padding: 0 4%; }
@@ -587,7 +577,7 @@
     <div class="hero-typed"><span id="typed-text">Deep Learning Developer</span><span class="cursor">|</span></div>
     <h3>Hi, I'm Vishnu S!</h3>
     <h1>AI &amp; <span>Vision</span><br>Engineer</h1>
-    <p>Passionate about building real-world intelligent systems — from high-speed YOLO detection to neural networks running on ESP32 microcontrollers. I bridge the gap between complex AI and constrained hardware.</p>
+    <p>AI Engineer focused on building production-ready intelligent systems — from real-time computer vision pipelines to data-driven automation. I turn research-grade models into reliable systems that perform in real-world, high-stakes environments.</p>
     <div class="cta-section">
       <button class="cta-1" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
         Projects <i class="fa-solid fa-code"></i>
@@ -598,16 +588,16 @@
     </div>
     <div class="hero-stats">
       <div class="stat">
-        <div class="stat-num">600+</div>
-        <div class="stat-label">FPS Achieved</div>
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Industrial AI Deployments</div>
       </div>
       <div class="stat">
         <div class="stat-num">5+</div>
         <div class="stat-label">AI Projects</div>
       </div>
       <div class="stat">
-        <div class="stat-num">ESP32</div>
-        <div class="stat-label">Edge Deploy</div>
+        <div class="stat-num">1</div>
+        <div class="stat-label">AI/ML Internship</div>
       </div>
     </div>
     <div class="social-section">
@@ -633,8 +623,8 @@
   <div class="about-grid">
     <div class="about-text reveal">
       <p>I'm <strong>Vishnu S</strong>, an AI/ML engineer based in Chennai, India. Currently pursuing my B.E. in Artificial Intelligence & Machine Learning at Jerusalem College of Engineering (Expected 2027).</p>
-      <p>My focus is <strong>bridging hardware constraints with complex software architectures</strong>. I build systems that don't just work in notebooks — they run on real hardware, in real time, solving real problems.</p>
-      <p>From deploying neural networks on <strong>ESP32 microcontrollers</strong> to engineering railway safety systems with YOLOv8, I'm driven by the challenge of making AI practical at the edge.</p>
+      <p>My focus is <strong>engineering AI systems that move beyond the notebook</strong> — combining computer vision, deep learning, and data analytics into solutions that run reliably in production. I build systems that solve real problems, in real time, under real-world constraints.</p>
+      <p>From engineering <strong>railway safety and infrastructure inspection systems with YOLOv8</strong> to deploying data-driven APIs for industrial use cases, I'm driven by the challenge of making AI dependable outside the lab.</p>
     </div>
     <div class="reveal">
       <div class="edu-box">
@@ -642,7 +632,7 @@
         <p>Jerusalem College of Engineering, Chennai · Expected March 2027</p>
         <span class="edu-badge">In Progress</span>
         <div class="highlights">
-          <div class="hl"><i class="fa-solid fa-bolt"></i> 600+ FPS CNN Performance Benchmark</div>
+          <div class="hl"><i class="fa-solid fa-industry"></i> Industrial AI & Computer Vision Deployment</div>
           <div class="hl"><i class="fa-solid fa-microchip"></i> Hardware-Software Co-Design</div>
           <div class="hl"><i class="fa-solid fa-train"></i> Industrial Rail Vision Systems</div>
           <div class="hl"><i class="fa-solid fa-trophy"></i> Planet X Ideathon Participant</div>
@@ -660,66 +650,40 @@
   </div>
   <div class="skills-grid reveal">
     <div class="skill-card">
-      <div class="skill-emoji">👁️</div>
+      <img class="skill-image" src="https://images.unsplash.com/photo-1501621667575-af81f1f0bacc?w=400&h=240&fit=crop&auto=format&q=80" alt="Computer vision">
       <div class="skill-cat">Vision</div>
       <div class="skill-name">Computer Vision</div>
       <div class="tags"><span class="tag">YOLOv5/v8</span><span class="tag">OpenCV</span><span class="tag">Detection</span></div>
     </div>
     <div class="skill-card">
-      <div class="skill-emoji">🧠</div>
+      <img class="skill-image" src="https://images.unsplash.com/photo-1674027444485-cec3da58eef4?w=400&h=240&fit=crop&auto=format&q=80" alt="Neural network">
       <div class="skill-cat">Deep Learning</div>
       <div class="skill-name">Neural Networks</div>
       <div class="tags"><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">CNN Optim.</span></div>
     </div>
     <div class="skill-card">
-      <div class="skill-emoji">⚡</div>
-      <div class="skill-cat">Edge AI</div>
-      <div class="skill-name">Embedded Systems</div>
-      <div class="tags"><span class="tag">ESP32</span><span class="tag">Arduino</span><span class="tag">Embedded C</span></div>
+      <img class="skill-image" src="https://images.unsplash.com/photo-1716191299980-a6e8827ba10b?w=400&h=240&fit=crop&auto=format&q=80" alt="Industrial robotics">
+      <div class="skill-cat">Industrial AI</div>
+      <div class="skill-name">Industrial & Infrastructure AI</div>
+      <div class="tags"><span class="tag">Railway Vision</span><span class="tag">Asset Inspection</span><span class="tag">Predictive Analytics</span></div>
     </div>
     <div class="skill-card">
-      <div class="skill-emoji">🐍</div>
+      <img class="skill-image" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=400&h=240&fit=crop&auto=format&q=80" alt="Programming code">
       <div class="skill-cat">Languages</div>
       <div class="skill-name">Programming</div>
       <div class="tags"><span class="tag">Python 3.9</span><span class="tag">C/C++</span><span class="tag">Embedded C</span></div>
     </div>
     <div class="skill-card">
-      <div class="skill-emoji">🚀</div>
+      <img class="skill-image" src="https://images.unsplash.com/photo-1667984390538-3dea7a3fe33d?w=400&h=240&fit=crop&auto=format&q=80" alt="Cloud deployment">
       <div class="skill-cat">Deployment</div>
       <div class="skill-name">MLOps & APIs</div>
       <div class="tags"><span class="tag">Flask</span><span class="tag">FastAPI</span><span class="tag">n8n</span></div>
     </div>
     <div class="skill-card">
-      <div class="skill-emoji">📊</div>
+      <img class="skill-image" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=240&fit=crop&auto=format&q=80" alt="Data analytics">
       <div class="skill-cat">Analytics</div>
       <div class="skill-name">Data & NLP</div>
       <div class="tags"><span class="tag">NLP</span><span class="tag">Data Analytics</span><span class="tag">Prompt Eng.</span></div>
-    </div>
-  </div>
-  <div class="skill-bars reveal">
-    <div class="bar-item">
-      <div class="bar-top"><span class="bar-label">Python</span><span class="bar-pct">92%</span></div>
-      <div class="bar-track"><div class="bar-fill" data-w="92"></div></div>
-    </div>
-    <div class="bar-item">
-      <div class="bar-top"><span class="bar-label">Computer Vision</span><span class="bar-pct">90%</span></div>
-      <div class="bar-track"><div class="bar-fill" data-w="90"></div></div>
-    </div>
-    <div class="bar-item">
-      <div class="bar-top"><span class="bar-label">Deep Learning</span><span class="bar-pct">85%</span></div>
-      <div class="bar-track"><div class="bar-fill" data-w="85"></div></div>
-    </div>
-    <div class="bar-item">
-      <div class="bar-top"><span class="bar-label">OpenCV</span><span class="bar-pct">88%</span></div>
-      <div class="bar-track"><div class="bar-fill" data-w="88"></div></div>
-    </div>
-    <div class="bar-item">
-      <div class="bar-top"><span class="bar-label">Embedded AI</span><span class="bar-pct">75%</span></div>
-      <div class="bar-track"><div class="bar-fill" data-w="75"></div></div>
-    </div>
-    <div class="bar-item">
-      <div class="bar-top"><span class="bar-label">Model Deployment</span><span class="bar-pct">80%</span></div>
-      <div class="bar-track"><div class="bar-fill" data-w="80"></div></div>
     </div>
   </div>
 </section>
@@ -771,8 +735,8 @@
       <div class="proj-num">03 · Edge AI</div>
       <span class="proj-badge">Embedded Deploy</span>
       <h3 class="proj-title">Neural Irrigation Controller</h3>
-      <p class="proj-desc">Custom neural network trained from scratch and optimized for ESP32 deployment. Autonomous irrigation via real-time sensor fusion — moisture, temperature, and humidity.</p>
-      <div class="proj-tech"><span>Custom NN</span><span>ESP32</span><span>Embedded C</span><span>Sensor Fusion</span></div>
+      <p class="proj-desc">Custom neural network trained from scratch and optimized for low-power microcontroller deployment (ESP32). Autonomous irrigation via real-time sensor fusion — moisture, temperature, and humidity.</p>
+      <div class="proj-tech"><span>Custom NN</span><span>Embedded C</span><span>Sensor Fusion</span></div>
     </div>
     <div class="project-card">
       <div class="proj-num">04 · NLP</div>
@@ -782,11 +746,11 @@
       <div class="proj-tech"><span>Python</span><span>NLP</span><span>Speech Recognition</span><span>TTS</span></div>
     </div>
     <div class="project-card">
-      <div class="proj-num">05 · Optimization</div>
-      <span class="proj-badge">Performance Research</span>
-      <h3 class="proj-title">CNN 600+ FPS Benchmark</h3>
-      <p class="proj-desc">Optimized high-performance CNN models achieving 600+ FPS in experimental environments — pushing the boundary of real-time inference speed.</p>
-      <div class="proj-tech"><span>PyTorch</span><span>pyCUDA</span><span>CNN Optimization</span></div>
+      <div class="proj-num">05 · Data Intelligence</div>
+      <span class="proj-badge">Applied AI</span>
+      <h3 class="proj-title">AI Inference Analytics Platform</h3>
+      <p class="proj-desc">Built a data analytics pipeline to monitor production model inference logs — surfacing latency bottlenecks and performance trends to guide continuous model and system improvement.</p>
+      <div class="proj-tech"><span>Python</span><span>Data Analytics</span><span>Model Monitoring</span></div>
     </div>
     <div class="project-card">
       <div class="proj-num">06 · Automation</div>
@@ -871,15 +835,6 @@
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 })();
 
-// Skill bar animation
-(function(){
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(e.isIntersecting){ e.target.style.width = e.target.dataset.w+'%'; obs.unobserve(e.target); }
-    });
-  }, {threshold: 0.5});
-  document.querySelectorAll('.bar-fill').forEach(b => obs.observe(b));
-})();
 window.addEventListener("load",()=>{document.body.style.opacity="1";const l=document.getElementById("loader");l.style.opacity="0";setTimeout(()=>l.remove(),400);});
 
 // ── THEME TOGGLE (Light/Dark) ──
