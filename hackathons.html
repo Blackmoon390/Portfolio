@@ -700,6 +700,8 @@
     margin-bottom: 30px;
   }
   .hk-filters { display: flex; gap: 10px; flex-wrap: wrap; }
+  .hk-filter-group { display: flex; flex-direction: column; gap: 8px; }
+  .hk-filter-group-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
   .hk-filter-btn {
     font-size: 0.78rem;
     font-weight: 700;
@@ -747,6 +749,20 @@
   .hk-card.hk-hidden { display: none; }
   .hk-card-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .hk-card-top h3 { margin: 0; }
+  .hk-card-heading { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .hk-type-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    width: fit-content;
+  }
+  .hk-type-tag i { color: var(--purple); font-size: 11px; }
+  .hk-badges { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
   .hk-status-badge {
     flex-shrink: 0;
     font-size: 0.65rem;
@@ -817,25 +833,38 @@
 <section class="hk-body">
 
   <div class="hk-stats">
-    <div class="hk-stat active" data-filter="all">
+    <div class="hk-stat active" data-filter-type="all">
       <div class="hk-stat-num" data-count="7">0</div>
-      <div class="hk-stat-label">Total Hackathons</div>
+      <div class="hk-stat-label">Total Events</div>
     </div>
-    <div class="hk-stat" data-filter="winner">
-      <div class="hk-stat-num" data-count="5">0</div>
-      <div class="hk-stat-label">1st Prize Wins</div>
+    <div class="hk-stat" data-filter-type="hackathon">
+      <div class="hk-stat-num" data-count="4">0</div>
+      <div class="hk-stat-label">Hackathons</div>
     </div>
-    <div class="hk-stat" data-filter="runner">
-      <div class="hk-stat-num" data-count="2">0</div>
-      <div class="hk-stat-label">Runner-Up</div>
+    <div class="hk-stat" data-filter-type="technical">
+      <div class="hk-stat-num" data-count="3">0</div>
+      <div class="hk-stat-label">Technical Events</div>
     </div>
   </div>
 
   <div class="hk-controls">
     <div class="hk-filters">
-      <button class="hk-filter-btn active" data-filter="all">All</button>
-      <button class="hk-filter-btn" data-filter="winner">1st Prize</button>
-      <button class="hk-filter-btn" data-filter="runner">Runner-Up</button>
+      <div class="hk-filter-group">
+        <span class="hk-filter-group-label">Type</span>
+        <div>
+          <button class="hk-filter-btn active" data-filter-type="all">All</button>
+          <button class="hk-filter-btn" data-filter-type="hackathon">Hackathons</button>
+          <button class="hk-filter-btn" data-filter-type="technical">Technical Events</button>
+        </div>
+      </div>
+      <div class="hk-filter-group">
+        <span class="hk-filter-group-label">Result</span>
+        <div>
+          <button class="hk-filter-btn active" data-filter-status="all">All</button>
+          <button class="hk-filter-btn" data-filter-status="winner">1st Prize</button>
+          <button class="hk-filter-btn" data-filter-status="runner">Runner-Up</button>
+        </div>
+      </div>
     </div>
     <div class="hk-search-wrap">
       <i class="fa-solid fa-magnifying-glass"></i>
@@ -844,11 +873,16 @@
   </div>
 
   <div class="hk-body-list" id="hk-list">
-    <div class="hk-card reveal" data-status="winner">
+    <div class="hk-card reveal" data-status="winner" data-type="hackathon">
       <div class="hk-card-top">
-        <h3>PALS TurboTech Build Hackathon 2025</h3>
-        <span class="hk-status-badge"><i class="fa-solid fa-trophy"></i> 1st Prize</span>
-        <i class="fa-solid fa-chevron-down hk-chevron"></i>
+        <div class="hk-card-heading">
+          <span class="hk-type-tag"><i class="fa-solid fa-code-branch"></i> Hackathon</span>
+          <h3>PALS TurboTech Build Hackathon 2025</h3>
+        </div>
+        <div class="hk-badges">
+          <span class="hk-status-badge"><i class="fa-solid fa-trophy"></i> 1st Prize</span>
+          <i class="fa-solid fa-chevron-down hk-chevron"></i>
+        </div>
       </div>
       <div class="hk-list-wrap"><div class="hk-list-inner">
       <ul class="hk-list">
@@ -858,11 +892,16 @@
       </div></div>
     </div>
 
-    <div class="hk-card reveal" data-status="winner">
+    <div class="hk-card reveal" data-status="winner" data-type="technical">
       <div class="hk-card-top">
-        <h3>Dataverse Drestein 2025 – Saveetha Engineering College</h3>
-        <span class="hk-status-badge"><i class="fa-solid fa-trophy"></i> 1st Prize</span>
-        <i class="fa-solid fa-chevron-down hk-chevron"></i>
+        <div class="hk-card-heading">
+          <span class="hk-type-tag"><i class="fa-solid fa-flask"></i> Technical Event</span>
+          <h3>Dataverse Drestein 2025 – Saveetha Engineering College</h3>
+        </div>
+        <div class="hk-badges">
+          <span class="hk-status-badge"><i class="fa-solid fa-trophy"></i> 1st Prize</span>
+          <i class="fa-solid fa-chevron-down hk-chevron"></i>
+        </div>
       </div>
       <div class="hk-list-wrap"><div class="hk-list-inner">
       <ul class="hk-list">
@@ -873,11 +912,16 @@
       </div></div>
     </div>
 
-    <div class="hk-card reveal" data-status="winner">
+    <div class="hk-card reveal" data-status="winner" data-type="technical">
       <div class="hk-card-top">
-        <h3>Smart Cities – Optimization Techniques | Euphoria 2025</h3>
-        <span class="hk-status-badge"><i class="fa-solid fa-trophy"></i> 1st Prize</span>
-        <i class="fa-solid fa-chevron-down hk-chevron"></i>
+        <div class="hk-card-heading">
+          <span class="hk-type-tag"><i class="fa-solid fa-flask"></i> Technical Event</span>
+          <h3>Smart Cities – Optimization Techniques | Euphoria 2025</h3>
+        </div>
+        <div class="hk-badges">
+          <span class="hk-status-badge"><i class="fa-solid fa-trophy"></i> 1st Prize</span>
+          <i class="fa-solid fa-chevron-down hk-chevron"></i>
+        </div>
       </div>
       <div class="hk-list-wrap"><div class="hk-list-inner">
       <ul class="hk-list">
@@ -888,11 +932,16 @@
       </div></div>
     </div>
 
-    <div class="hk-card reveal" data-status="winner">
+    <div class="hk-card reveal" data-status="winner" data-type="hackathon">
       <div class="hk-card-top">
-        <h3>VORTEXA – National-Level Hackathon</h3>
-        <span class="hk-status-badge"><i class="fa-solid fa-trophy"></i> Winner</span>
-        <i class="fa-solid fa-chevron-down hk-chevron"></i>
+        <div class="hk-card-heading">
+          <span class="hk-type-tag"><i class="fa-solid fa-code-branch"></i> Hackathon</span>
+          <h3>VORTEXA – National-Level Hackathon</h3>
+        </div>
+        <div class="hk-badges">
+          <span class="hk-status-badge"><i class="fa-solid fa-trophy"></i> Winner</span>
+          <i class="fa-solid fa-chevron-down hk-chevron"></i>
+        </div>
       </div>
       <div class="hk-list-wrap"><div class="hk-list-inner">
       <ul class="hk-list">
@@ -903,11 +952,16 @@
       </div></div>
     </div>
 
-    <div class="hk-card reveal" data-status="winner">
+    <div class="hk-card reveal" data-status="winner" data-type="technical">
       <div class="hk-card-top">
-        <h3>IntelliHunt – Intellizone | Jerusalem College of Engineering</h3>
-        <span class="hk-status-badge"><i class="fa-solid fa-trophy"></i> 1st Prize</span>
-        <i class="fa-solid fa-chevron-down hk-chevron"></i>
+        <div class="hk-card-heading">
+          <span class="hk-type-tag"><i class="fa-solid fa-flask"></i> Technical Event</span>
+          <h3>IntelliHunt – Intellizone | Jerusalem College of Engineering</h3>
+        </div>
+        <div class="hk-badges">
+          <span class="hk-status-badge"><i class="fa-solid fa-trophy"></i> 1st Prize</span>
+          <i class="fa-solid fa-chevron-down hk-chevron"></i>
+        </div>
       </div>
       <div class="hk-list-wrap"><div class="hk-list-inner">
       <ul class="hk-list">
@@ -918,11 +972,16 @@
       </div></div>
     </div>
 
-    <div class="hk-card reveal" data-status="runner">
+    <div class="hk-card reveal" data-status="runner" data-type="hackathon">
       <div class="hk-card-top">
-        <h3>DataXscape 2K26 – National-Level Data Science Hackathon</h3>
-        <span class="hk-status-badge runner"><i class="fa-solid fa-medal"></i> Runner-Up</span>
-        <i class="fa-solid fa-chevron-down hk-chevron"></i>
+        <div class="hk-card-heading">
+          <span class="hk-type-tag"><i class="fa-solid fa-code-branch"></i> Hackathon</span>
+          <h3>DataXscape 2K26 – National-Level Data Science Hackathon</h3>
+        </div>
+        <div class="hk-badges">
+          <span class="hk-status-badge runner"><i class="fa-solid fa-medal"></i> Runner-Up</span>
+          <i class="fa-solid fa-chevron-down hk-chevron"></i>
+        </div>
       </div>
       <div class="hk-list-wrap"><div class="hk-list-inner">
       <ul class="hk-list">
@@ -933,11 +992,16 @@
       </div></div>
     </div>
 
-    <div class="hk-card reveal" data-status="runner">
+    <div class="hk-card reveal" data-status="runner" data-type="hackathon">
       <div class="hk-card-top">
-        <h3>ITERYX ’26 – Inter-College Software Hackathon</h3>
-        <span class="hk-status-badge runner"><i class="fa-solid fa-medal"></i> Runner-Up</span>
-        <i class="fa-solid fa-chevron-down hk-chevron"></i>
+        <div class="hk-card-heading">
+          <span class="hk-type-tag"><i class="fa-solid fa-code-branch"></i> Hackathon</span>
+          <h3>ITERYX ’26 – Inter-College Software Hackathon</h3>
+        </div>
+        <div class="hk-badges">
+          <span class="hk-status-badge runner"><i class="fa-solid fa-medal"></i> Runner-Up</span>
+          <i class="fa-solid fa-chevron-down hk-chevron"></i>
+        </div>
       </div>
       <div class="hk-list-wrap"><div class="hk-list-inner">
       <ul class="hk-list">
@@ -1009,38 +1073,44 @@ window.addEventListener("load",()=>{document.body.style.opacity="1";const l=docu
 // ── HACKATHONS PAGE INTERACTIVITY ──
 (function(){
   const cards = Array.from(document.querySelectorAll('.hk-card'));
-  const filterBtns = Array.from(document.querySelectorAll('.hk-filter-btn'));
+  const typeBtns = Array.from(document.querySelectorAll('[data-filter-type].hk-filter-btn'));
+  const statusBtns = Array.from(document.querySelectorAll('[data-filter-status].hk-filter-btn'));
   const statCards = Array.from(document.querySelectorAll('.hk-stat'));
   const searchInput = document.getElementById('hk-search');
   const noResults = document.getElementById('hk-no-results');
-  let activeFilter = 'all';
+  let activeType = 'all';
+  let activeStatus = 'all';
 
   function applyFilters(){
     const term = (searchInput.value || '').trim().toLowerCase();
     let visibleCount = 0;
     cards.forEach(card => {
-      const matchesFilter = activeFilter === 'all' || card.getAttribute('data-status') === activeFilter;
+      const matchesType = activeType === 'all' || card.getAttribute('data-type') === activeType;
+      const matchesStatus = activeStatus === 'all' || card.getAttribute('data-status') === activeStatus;
       const matchesSearch = !term || card.textContent.toLowerCase().includes(term);
-      const show = matchesFilter && matchesSearch;
+      const show = matchesType && matchesStatus && matchesSearch;
       card.classList.toggle('hk-hidden', !show);
       if (show) visibleCount++;
     });
     noResults.classList.toggle('show', visibleCount === 0);
   }
 
-  function setActiveFilter(filter){
-    activeFilter = filter;
-    filterBtns.forEach(b => b.classList.toggle('active', b.getAttribute('data-filter') === filter));
-    statCards.forEach(s => s.classList.toggle('active', s.getAttribute('data-filter') === filter));
+  function setActiveType(type){
+    activeType = type;
+    typeBtns.forEach(b => b.classList.toggle('active', b.getAttribute('data-filter-type') === type));
+    statCards.forEach(s => s.classList.toggle('active', s.getAttribute('data-filter-type') === type));
     applyFilters();
   }
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => setActiveFilter(btn.getAttribute('data-filter')));
-  });
-  statCards.forEach(stat => {
-    stat.addEventListener('click', () => setActiveFilter(stat.getAttribute('data-filter')));
-  });
+  function setActiveStatus(status){
+    activeStatus = status;
+    statusBtns.forEach(b => b.classList.toggle('active', b.getAttribute('data-filter-status') === status));
+    applyFilters();
+  }
+
+  typeBtns.forEach(btn => btn.addEventListener('click', () => setActiveType(btn.getAttribute('data-filter-type'))));
+  statusBtns.forEach(btn => btn.addEventListener('click', () => setActiveStatus(btn.getAttribute('data-filter-status'))));
+  statCards.forEach(stat => stat.addEventListener('click', () => setActiveType(stat.getAttribute('data-filter-type'))));
   searchInput.addEventListener('input', applyFilters);
 
   // expand / collapse
