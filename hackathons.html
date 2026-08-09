@@ -777,6 +777,7 @@
     white-space: nowrap;
   }
   .hk-status-badge.runner { background: var(--proj-tech-bg); color: var(--navy); border-color: var(--card-border); }
+  .hk-status-badge.third { background: var(--white); color: var(--muted); border-color: var(--input-border); }
   .hk-chevron {
     color: var(--purple);
     font-size: 0.9rem;
@@ -834,15 +835,15 @@
 
   <div class="hk-stats">
     <div class="hk-stat active" data-filter-type="all">
-      <div class="hk-stat-num" data-count="7">0</div>
+      <div class="hk-stat-num" data-count="9">0</div>
       <div class="hk-stat-label">Total Events</div>
     </div>
     <div class="hk-stat" data-filter-type="hackathon">
-      <div class="hk-stat-num" data-count="4">0</div>
+      <div class="hk-stat-num" data-count="5">0</div>
       <div class="hk-stat-label">Hackathons</div>
     </div>
     <div class="hk-stat" data-filter-type="technical">
-      <div class="hk-stat-num" data-count="3">0</div>
+      <div class="hk-stat-num" data-count="4">0</div>
       <div class="hk-stat-label">Technical Events</div>
     </div>
   </div>
@@ -863,6 +864,7 @@
           <button class="hk-filter-btn active" data-filter-status="all">All</button>
           <button class="hk-filter-btn" data-filter-status="winner">1st Prize</button>
           <button class="hk-filter-btn" data-filter-status="runner">Runner-Up</button>
+          <button class="hk-filter-btn" data-filter-status="third">3rd Prize</button>
         </div>
       </div>
     </div>
@@ -1008,6 +1010,45 @@
         <li>Achieved Runner-Up position in ITERYX ’26, a 24-hour Inter-College, Interdisciplinary Software Hackathon conducted in fully offline mode.</li>
         <li>Conceptualized, designed, and developed a scalable software solution from idea generation to functional prototype within the hackathon timeframe.</li>
         <li>Presented the final solution to an industry jury panel, demonstrating innovation, software engineering expertise, teamwork, and effective problem-solving capabilities.</li>
+      </ul>
+      </div></div>
+    </div>
+    <div class="hk-card reveal" data-status="third" data-type="hackathon">
+      <div class="hk-card-top">
+        <div class="hk-card-heading">
+          <span class="hk-type-tag"><i class="fa-solid fa-code-branch"></i> Hackathon</span>
+          <h3>IOT Hackathon – Iron Code</h3>
+        </div>
+        <div class="hk-badges">
+          <span class="hk-status-badge third"><i class="fa-solid fa-award"></i> 3rd Prize</span>
+          <i class="fa-solid fa-chevron-down hk-chevron"></i>
+        </div>
+      </div>
+      <div class="hk-list-wrap"><div class="hk-list-inner">
+      <ul class="hk-list">
+        <li>Secured 3rd Prize in Iron Code, an IoT System Development Hackathon held at Loyola-ICAM College of Engineering and Technology.</li>
+        <li>Attempted a technical quiz to test core IoT and problem-solving knowledge before advancing to the build phase.</li>
+        <li>Designed and coded a complete IoT solution for a given problem statement, combining hands-on hardware/software integration with rapid prototyping under time constraints.</li>
+      </ul>
+      </div></div>
+    </div>
+
+    <div class="hk-card reveal" data-status="third" data-type="technical">
+      <div class="hk-card-top">
+        <div class="hk-card-heading">
+          <span class="hk-type-tag"><i class="fa-solid fa-flask"></i> Technical Event</span>
+          <h3>Grid to Goal</h3>
+        </div>
+        <div class="hk-badges">
+          <span class="hk-status-badge third"><i class="fa-solid fa-award"></i> 3rd Prize</span>
+          <i class="fa-solid fa-chevron-down hk-chevron"></i>
+        </div>
+      </div>
+      <div class="hk-list-wrap"><div class="hk-list-inner">
+      <ul class="hk-list">
+        <li>Secured 3rd Prize in Grid to Goal, a circuit-based puzzle-solving technical event.</li>
+        <li>Solved logic-driven circuit puzzles under time pressure, tracing the correct path and completing connections to reach the goal state.</li>
+        <li>Applied structured problem-solving and quick decision-making to outperform competing teams within the given time limit.</li>
       </ul>
       </div></div>
     </div>
