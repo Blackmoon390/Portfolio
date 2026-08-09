@@ -413,6 +413,24 @@
       color: var(--navy);
       border-radius: 20px;
     }
+    .view-all-wrap { display: flex; justify-content: center; margin-top: 40px; }
+    .view-all-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--purple);
+      background: var(--purple-soft);
+      border: 1px solid var(--card-border);
+      padding: 14px 30px;
+      border-radius: 6px;
+      transition: 0.25s;
+    }
+    .view-all-btn:hover { background: var(--purple); color: white; border-color: var(--purple); transform: translateY(-2px); }
 
     /* ── EXPERIENCE ── */
     #experience { }
@@ -595,10 +613,6 @@
         <div class="stat-num">5+</div>
         <div class="stat-label">AI Projects</div>
       </div>
-      <div class="stat">
-        <div class="stat-num">1</div>
-        <div class="stat-label">AI/ML Internship</div>
-      </div>
     </div>
     <div class="social-section">
       <i class="fa-brands fa-github" onclick="window.open('https://github.com/Blackmoon390')"></i>
@@ -698,7 +712,7 @@
   <div class="exp-card reveal">
     <div class="exp-top">
       <div class="exp-role">AI / ML Intern</div>
-      <div class="exp-date">Jan 2026 – Present</div>
+      <div class="exp-date">Jun 2025 – Jul 2025</div>
     </div>
     <div class="exp-co">Finari Services Pvt. Ltd. · Chennai, IN</div>
     <ul class="exp-list">
@@ -738,27 +752,9 @@
       <p class="proj-desc">Custom neural network trained from scratch and optimized for low-power microcontroller deployment (ESP32). Autonomous irrigation via real-time sensor fusion — moisture, temperature, and humidity.</p>
       <div class="proj-tech"><span>Custom NN</span><span>Embedded C</span><span>Sensor Fusion</span></div>
     </div>
-    <div class="project-card">
-      <div class="proj-num">04 · NLP</div>
-      <span class="proj-badge">Intelligent Assistant</span>
-      <h3 class="proj-title">Neural Voice Assistant</h3>
-      <p class="proj-desc">Python-based voice assistant with speech recognition and TTS synthesis. Integrated Naive Bayes NLP model for high-accuracy spam detection.</p>
-      <div class="proj-tech"><span>Python</span><span>NLP</span><span>Speech Recognition</span><span>TTS</span></div>
-    </div>
-    <div class="project-card">
-      <div class="proj-num">05 · Data Intelligence</div>
-      <span class="proj-badge">Applied AI</span>
-      <h3 class="proj-title">AI Inference Analytics Platform</h3>
-      <p class="proj-desc">Built a data analytics pipeline to monitor production model inference logs — surfacing latency bottlenecks and performance trends to guide continuous model and system improvement.</p>
-      <div class="proj-tech"><span>Python</span><span>Data Analytics</span><span>Model Monitoring</span></div>
-    </div>
-    <div class="project-card">
-      <div class="proj-num">06 · Automation</div>
-      <span class="proj-badge">MLOps</span>
-      <h3 class="proj-title">AI Automation Workflows</h3>
-      <p class="proj-desc">Scalable pipelines using n8n to connect AI models with production APIs. Deterministic AI responses via prompt engineering for reliable interaction layers.</p>
-      <div class="proj-tech"><span>n8n</span><span>FastAPI</span><span>Flask</span><span>Prompt Eng.</span></div>
-    </div>
+  </div>
+  <div class="view-all-wrap reveal">
+    <a class="view-all-btn" href="projects.html">View All Projects <i class="fa-solid fa-arrow-right"></i></a>
   </div>
 </section>
 
